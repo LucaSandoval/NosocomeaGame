@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1186689044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186689046}
+  - component: {fileID: 1186689045}
+  m_Layer: 0
+  m_Name: -1 0 hallway
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186689046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186689044}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5442076, y: -0.26, z: -2.4604383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3395424911224904537}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1186689045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186689044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15babfd5fc1904ed48a598e6f23be108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDestroy: {fileID: 5317414522329350933}
+  prefabToInstantiate: {fileID: 416359679544254546, guid: 7f77275bb2e4c4405b4bdf469f2b7a6c, type: 3}
 --- !u!1 &1472341302987917789
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,6 +82,7 @@ Transform:
   - {fileID: 5317414521911519834}
   - {fileID: 5317414522329350943}
   - {fileID: 5317414522792106805}
+  - {fileID: 1186689046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,7 +429,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2689
+  m_VersionIndex: 2722
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -739,7 +786,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2689
+  m_VersionIndex: 2722
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1193,7 +1240,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2692
+  m_VersionIndex: 2725
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1314,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275713800298360070, guid: 6b84efaaf1e624760b41ce597b892829, type: 3}
       propertyPath: m_VersionIndex
-      value: 2698
+      value: 2731
       objectReference: {fileID: 0}
     - target: {fileID: 2119392869249971939, guid: 6b84efaaf1e624760b41ce597b892829, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1469,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7122605140971027569, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_VersionIndex
-      value: 4536
+      value: 4569
       objectReference: {fileID: 0}
     - target: {fileID: 7122605140971027569, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_SelectedEdges.Array.size
@@ -1489,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7379826181984197166, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_VersionIndex
-      value: 4563
+      value: 4596
       objectReference: {fileID: 0}
     - target: {fileID: 8927525913241114587, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_Mesh
@@ -1575,7 +1622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7122605140971027569, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_VersionIndex
-      value: 4539
+      value: 4572
       objectReference: {fileID: 0}
     - target: {fileID: 7379826181984197166, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_Mesh
@@ -1583,7 +1630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7379826181984197166, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_VersionIndex
-      value: 4566
+      value: 4599
       objectReference: {fileID: 0}
     - target: {fileID: 8927525913241114587, guid: a7bcc9e8a315442bcb5f6061749e63d5, type: 3}
       propertyPath: m_Mesh
