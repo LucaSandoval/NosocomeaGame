@@ -25,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     float maxDistance = 20f;
 
     float distance;
+    bool detected;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
         rb = GetComponent<Rigidbody>();
+        detected = false;
     }
 
     // Update is called once per frame
@@ -41,12 +43,15 @@ public class EnemyBehavior : MonoBehaviour
     {
 
         distance = Vector3.Distance(transform.position, player.position);
-        
+        if (distance < maxDistance && !detected)
+        {
+            detected = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (distance < maxDistance) { 
+        if (detected) { 
             transform.LookAt(player);
             //float angle = Vector3.Angle(player.transform.position, transform.forward);
             //Vector3 vect = new Vector3(0,angle,0);
