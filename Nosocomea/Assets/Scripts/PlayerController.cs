@@ -10,15 +10,19 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 inputVector;
-    
+
+    private AttackBehavior attack;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        attack = GetComponent<AttackBehavior>();
     }
     private void Update()
     {
         GetInput();
         Look();
+        Attack();
     }
 
     private void FixedUpdate()
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
             //Smoothly rotate between current rotation and target rotation with a given turn speed
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed * Time.deltaTime);
-        }       
+        }
     }
 
     private void Move()
@@ -58,5 +62,13 @@ public class PlayerController : MonoBehaviour
         //Moves the rigidbody forward multiplying it by the magnitude of the input vector (so if you dont press a key it doesn't move
         //as well as the speed and time step. 
         rb.MovePosition(transform.position + transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime);
+    }
+
+    private void Attack()
+    {
+        if (Input.GetAxisRaw("Fire1") > 0)
+        {
+            attack.Attack();
+        }
     }
 }
