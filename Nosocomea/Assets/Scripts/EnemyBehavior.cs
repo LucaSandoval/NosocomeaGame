@@ -20,6 +20,10 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     int damageAmount = 1;
 
+    [Header("Used for detection radius")]
+    [SerializeField]
+    float maxDistance = 20f;
+
     float distance;
 
     // Start is called before the first frame update
@@ -42,13 +46,15 @@ public class EnemyBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.LookAt(player);
-        //float angle = Vector3.Angle(player.transform.position, transform.forward);
-        //Vector3 vect = new Vector3(0,angle,0);
-        //rb.AddTorque(vect);
-        if (distance > minDistance)
-        {
-            rb.AddForce(transform.forward * moveSpeed);
+        if (distance < maxDistance) { 
+            transform.LookAt(player);
+            //float angle = Vector3.Angle(player.transform.position, transform.forward);
+            //Vector3 vect = new Vector3(0,angle,0);
+            //rb.AddTorque(vect);
+            if (distance > minDistance)
+            {
+                rb.AddForce(transform.forward * moveSpeed);
+            } 
         }
     }
 }
