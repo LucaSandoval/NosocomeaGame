@@ -357,8 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d04f9c52bd874241a33950282c0dbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  turnSpeed: 720
+  walkSpeed: 300
+  turnSpeed: 1080
+  dashLength: 0.15
+  dashPower: 1000
 --- !u!114 &3483575209659617891
 MonoBehaviour:
   m_ObjectHideFlags: 0

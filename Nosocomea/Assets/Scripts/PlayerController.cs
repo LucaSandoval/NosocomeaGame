@@ -76,12 +76,12 @@ public class PlayerController : MonoBehaviour
         if (dashing)
         {
             //If the player is dashing, move very fast in the stored direction pre dash
-            rb.MovePosition(transform.position + transform.forward * storedDashVelocity.normalized.magnitude * dashPower * Time.deltaTime);
+            rb.velocity = transform.forward * storedDashVelocity.normalized.magnitude * dashPower * Time.deltaTime;
         } else
         {
             //Moves the rigidbody forward multiplying it by the magnitude of the input vector (so if you dont press a key it doesn't move
             //as well as the speed and time step. 
-            rb.MovePosition(transform.position + transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime);
+            rb.velocity = transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime;
         }     
     }
 

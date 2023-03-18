@@ -6,7 +6,7 @@ public class IsoCamera : MonoBehaviour
     public Vector3 offset;
     public float moveSpeed = 5f;
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         // Move the camera to follow the target object
         Vector3 desiredPosition = target.position + offset;
