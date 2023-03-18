@@ -7,17 +7,25 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Values")]
     public float walkSpeed;
     public float turnSpeed; //represents degrees per second
+    public float dashLength; //represents time (seconds) of dash
+    public float dashPower;
 
     private Rigidbody rb;
     private Vector3 inputVector;
 
     private AttackBehavior attack;
 
+    //Dash
+    private bool dashing;
+    private Vector3 storedDashVelocity;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
+        dashing = false;
     }
+
     private void Update()
     {
         GetInput();
@@ -34,12 +42,18 @@ public class PlayerController : MonoBehaviour
     {
         //Get raw input from the player
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        //Check for dash input
+        if (Input.GetKeyDown(KeyCode.LeftShift) && inputVector != Vector3.zero && !isDashing())
+        {
+            Dash();
+        }
     }
 
     private void Look()
     {
         //Only do this if we are pressing a direction to avoid snapping to original rotation
-        if (inputVector != Vector3.zero)
+        if (inputVector != Vector3.zero && !isDashing())
         {
             //In order to achieve proper ISO movement, we need to offset them by a certain angle    
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
@@ -59,9 +73,16 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        //Moves the rigidbody forward multiplying it by the magnitude of the input vector (so if you dont press a key it doesn't move
-        //as well as the speed and time step. 
-        rb.MovePosition(transform.position + transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime);
+        if (dashing)
+        {
+            //If the player is dashing, move very fast in the stored direction pre dash
+            rb.MovePosition(transform.position + transform.forward * storedDashVelocity.normalized.magnitude * dashPower * Time.deltaTime);
+        } else
+        {
+            //Moves the rigidbody forward multiplying it by the magnitude of the input vector (so if you dont press a key it doesn't move
+            //as well as the speed and time step. 
+            rb.MovePosition(transform.position + transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime);
+        }     
     }
 
     private void Attack()
@@ -70,5 +91,26 @@ public class PlayerController : MonoBehaviour
         {
             attack.Attack();
         }
+    }
+
+    //Used externally to check if the player is currently dashing
+    public bool isDashing()
+    {
+        return dashing;
+    }
+
+    //Store the pre-dash move vector, disable player movement and start dash timer
+    private void Dash()
+    {
+        StartCoroutine(DashTimer());
+        storedDashVelocity = inputVector;
+    }
+
+    //Wait until dash is finished then return player control
+    private IEnumerator DashTimer()
+    {
+        dashing = true;
+        yield return new WaitForSecondsRealtime(dashLength);
+        dashing = false;
     }
 }
