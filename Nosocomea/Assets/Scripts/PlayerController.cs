@@ -19,8 +19,11 @@ public class PlayerController : MonoBehaviour
     private bool dashing;
     private Vector3 storedDashVelocity;
 
+    private PlayerStatController statController;
+
     void Start()
     {
+        statController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerStatController>();
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
         dashing = false;
@@ -81,8 +84,14 @@ public class PlayerController : MonoBehaviour
         {
             //Moves the rigidbody forward multiplying it by the magnitude of the input vector (so if you dont press a key it doesn't move
             //as well as the speed and time step. 
-            rb.velocity = transform.forward * inputVector.normalized.magnitude * walkSpeed * Time.deltaTime;
+            rb.velocity = transform.forward * inputVector.normalized.magnitude * CalcMoveSpeed() * Time.deltaTime;
         }     
+    }
+
+    private float CalcMoveSpeed()
+    {
+        float multiplier = Mathf.Lerp(1, 3, Mathf.InverseLerp(1, 20, statController.speed));
+        return walkSpeed * multiplier;
     }
 
     private void Attack()

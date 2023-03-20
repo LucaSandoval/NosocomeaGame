@@ -6,5 +6,5 @@ using UnityEngine;
 public class PassiveItem : Item
 {
     [Header("Stat Changes")]
-    public float speed;
+    public int speed;
 }
