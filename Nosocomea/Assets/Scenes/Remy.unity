@@ -1858,12 +1858,12 @@ MonoBehaviour:
   columns: 2
   roomSpacing: 30
   hallwayLength: 10
-  hallwayXOffset: 4
-  hallwayYOffset: 0
-  hallwayZOffset: 2
-  hallwayXOffsetEW: 3.5
-  hallwayYOffsetEW: 0
-  hallwayZOffsetNS: 1.5
+  hallwayXOffset: 8
+  hallwayYOffset: -1
+  hallwayZOffset: 5
+  hallwayXOffsetEW: 7
+  hallwayYOffsetEW: -1
+  hallwayZOffsetNS: 4
 --- !u!65 &1696604611
 BoxCollider:
   m_ObjectHideFlags: 0
