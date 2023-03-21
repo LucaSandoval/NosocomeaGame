@@ -1,65 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class EnemyBehavior : MonoBehaviour
+[RequireComponent(typeof(EnemyAgent))]
+public class EnemyBehavior : MonoBehaviour, Damageable
 {
-    [SerializeField]
-    Transform player;
+  [SerializeField] private float damage = 10f;
+  [SerializeField] private float health = 50f;
 
-    Rigidbody rb;
+  private EnemyAgent agent;
+  private PlayerController player;
 
-    [SerializeField]
-    float moveSpeed = 1f;
+  // Start is called before the first frame update
+  void Start()
+  {
+  }
 
-    [SerializeField]
-    float minDistance = 2f;
+  public void Attack(Damageable damageable)
+  {
+    damageable.ApplyDamage(damage);
+  }
 
-    [SerializeField]
-    int damageAmount = 1;
-
-    [Header("Used for detection radius")]
-    [SerializeField]
-    float maxDistance = 20f;
-
-    float distance;
-    bool detected;
-
-    // Start is called before the first frame update
-    void Start()
+  public void ApplyDamage(float damageTaken)
+  {
+    health -= damageTaken;
+    if (health <= 0)
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        rb = GetComponent<Rigidbody>();
-        detected = false;
+      GetComponent<EnemyAgent>().SetCurrentState(EnemyAgent.EnemyState.Dead);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        distance = Vector3.Distance(transform.position, player.position);
-        if (distance < maxDistance && !detected)
-        {
-            detected = true;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (detected) { 
-            transform.LookAt(player);
-            //float angle = Vector3.Angle(player.transform.position, transform.forward);
-            //Vector3 vect = new Vector3(0,angle,0);
-            //rb.AddTorque(vect);
-            if (distance > minDistance)
-            {
-                rb.AddForce(transform.forward * moveSpeed);
-            } 
-        }
-    }
+  }
 }
