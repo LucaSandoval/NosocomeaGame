@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip attackSFX;
+    public AudioClip dashSFX;
+
     [Header("Movement Values")]
     public float walkSpeed;
     public float turnSpeed; //represents degrees per second
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour
         //Check for dash input
         if (Input.GetKeyDown(KeyCode.LeftShift) && inputVector != Vector3.zero && !isDashing())
         {
+            AudioSource.PlayClipAtPoint(dashSFX, transform.position);
             Dash();
         }
     }
@@ -98,6 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Fire1") > 0)
         {
+            AudioSource.PlayClipAtPoint(attackSFX, transform.position);
             attack.Attack();
         }
     }

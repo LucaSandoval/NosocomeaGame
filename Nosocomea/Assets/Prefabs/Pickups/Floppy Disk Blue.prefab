@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 27ca6bf6b632b854881255693c3522f4, type: 2}
+  pickupSFX: {fileID: 8300000, guid: cdd8984775f97bd40a58eb392f49fd7c, type: 3}
 --- !u!1 &9159496076349841548
 GameObject:
   m_ObjectHideFlags: 0

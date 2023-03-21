@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d04f9c52bd874241a33950282c0dbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSFX: {fileID: 8300000, guid: c566583f21581544f92f56f29a4683f3, type: 3}
+  dashSFX: {fileID: 8300000, guid: 2e04c48bec3e83d4f9e7595c1198780e, type: 3}
   walkSpeed: 300
   turnSpeed: 1080
   dashLength: 0.15
