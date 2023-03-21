@@ -252,9 +252,10 @@ GameObject:
   - component: {fileID: 884590174}
   - component: {fileID: 884590176}
   - component: {fileID: 884590177}
+  - component: {fileID: 884590178}
   m_Layer: 0
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +267,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884590169}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 07b8d73a863443d46af5d4cf5dcefdd9, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
@@ -364,7 +365,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -392,8 +393,21 @@ MonoBehaviour:
   playerTransform: {fileID: 1470390660}
   chaseDistance: 10
   attackRange: 3
+  turnSpeed: 5
   attackCooldown: 1
   attackDamage: 1
+--- !u!114 &884590178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884590169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97fa46e899de10348b5057af4b016d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &976683882
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +630,7 @@ GameObject:
   - component: {fileID: 1470390657}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470390656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.11, y: 1.13, z: 3.75}
+  m_LocalPosition: {x: -2, y: 1.13, z: 2.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

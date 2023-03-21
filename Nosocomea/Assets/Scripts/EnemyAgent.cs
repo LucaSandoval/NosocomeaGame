@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(EnemyBehavior))]
 public class EnemyAgent : MonoBehaviour
 {
   public enum EnemyState
@@ -17,12 +19,16 @@ public class EnemyAgent : MonoBehaviour
   [SerializeReference] private EnemyState currentState;
   private NavMeshAgent agent;
 
+  private Rigidbody rb;
+
   [Header("Player Character")]
   [SerializeField] private Transform playerTransform;
 
-  [Header("AI Variables")]
+  [Header("Navigation Variables")]
   [SerializeField] private float chaseDistance = 10f;
   [SerializeField] private float attackRange = 3f;
+  [SerializeField] private float turnSpeed = 5f;
+  // NOTE: Speed is controlled via the NavMeshAgent.
 
   [Header("Attack")]
   [SerializeField] private float attackCooldown = 1f;
@@ -36,6 +42,8 @@ public class EnemyAgent : MonoBehaviour
     {
       playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
+    rb = GetComponent<Rigidbody>();
 
     agent = GetComponent<NavMeshAgent>();
     agent.updatePosition = false;
@@ -69,13 +77,14 @@ public class EnemyAgent : MonoBehaviour
 
   void Idle()
   {
-    if (Vector3.Distance(transform.position, playerTransform.position) < chaseDistance)
+    if (Vector3.Distance(transform.position, playerTransform.position) <= chaseDistance)
     {
       currentState = EnemyState.Chase;
       return;
     }
 
     agent.ResetPath();
+    rb.velocity = new Vector3(0, rb.velocity.y, 0);
   }
 
   void Chase()
@@ -85,14 +94,29 @@ public class EnemyAgent : MonoBehaviour
       currentState = EnemyState.Idle;
       return;
     }
-    else if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
+    else if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
     {
       currentState = EnemyState.Attack;
       return;
     }
 
+    Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, chaseDistance);
+
+    if (hit.collider != null && !hit.collider.CompareTag("Player"))
+    {
+      currentState = EnemyState.Idle;
+      return;
+    }
+
     agent.SetDestination(playerTransform.position);
-    LookAtPlayer();
+
+    Vector3 targetVelocity = (agent.nextPosition - transform.position).normalized * agent.speed;
+    rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
+
+    Quaternion lookRotation = Quaternion.LookRotation(targetVelocity);
+    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+
+    agent.nextPosition = transform.position;
   }
 
   void Attack()
@@ -112,11 +136,12 @@ public class EnemyAgent : MonoBehaviour
     }
 
     attackTimer -= Time.deltaTime;
+    rb.velocity = new Vector3(0, rb.velocity.y, 0);
   }
 
   void ExecuteAttack()
   {
-    // TODO: Execute the actual attack with animation and sound
+    // TODO: Implement attack logic using the Damageable interface on the player
   }
 
   void Dead()
@@ -130,7 +155,7 @@ public class EnemyAgent : MonoBehaviour
     transform.rotation = Quaternion.Slerp(
         transform.rotation,
         Quaternion.LookRotation(playerTransform.position - transform.position),
-        Time.deltaTime * 5f);
+        Time.deltaTime * turnSpeed);
   }
 
   public EnemyState GetCurrentState()
@@ -138,26 +163,18 @@ public class EnemyAgent : MonoBehaviour
     return currentState; 
   }
 
-  public bool ShouldMove()
+  public void SetCurrentState(EnemyState newState)
   {
-    return currentState == EnemyState.Chase || currentState == EnemyState.Attack;
+    currentState = newState;
   }
 
-  public void Move()
+  void OnDrawGizmos()
   {
-    Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
-    Vector3 velocity = Vector3.zero;
-    Vector2 smoothDeltaPosition = Vector2.zero;
-
-    float dx = Vector3.Dot (transform.right, worldDeltaPosition);
-    float dy = Vector3.Dot (transform.forward, worldDeltaPosition);
-
-    Vector2 deltaPosition = new Vector2 (dx, dy);
-
-    float smooth = Mathf.Min(1.0f, Time.deltaTime/0.15f);
-    smoothDeltaPosition = Vector2.Lerp (smoothDeltaPosition, deltaPosition, smooth);
-
-    if (Time.deltaTime > 1e-5f)
-      velocity = smoothDeltaPosition / Time.deltaTime;
+    Gizmos.color = Color.yellow;
+    Gizmos.DrawWireSphere(transform.position, chaseDistance);
+    Gizmos.color = Color.red;
+    Gizmos.DrawWireSphere(transform.position, attackRange);
+    Gizmos.color = Color.cyan;
+    Gizmos.DrawRay(transform.position, transform.forward * chaseDistance);
   }
 }
