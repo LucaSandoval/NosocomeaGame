@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c99a429dfa96d945b1b16fea83f973c, type: 3}
   m_Name: Test Passive
   m_EditorClassIdentifier: 
-  itemName: Test Item
+  itemName: Spped Disk
   itemDescription: Test item description.
-  speed: 5
+  itemIcon: {fileID: 0}
+  speed: 1
