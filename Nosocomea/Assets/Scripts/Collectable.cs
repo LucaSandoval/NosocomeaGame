@@ -8,6 +8,9 @@ public abstract class Collectable : MonoBehaviour
     private GameObject player;
     protected InventoryController inventoryController;
 
+    [HideInInspector]
+    public bool preventPickupUntilReset;
+
     public virtual void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -16,10 +19,19 @@ public abstract class Collectable : MonoBehaviour
 
     public virtual void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= collectionRange)
+        if (preventPickupUntilReset)
         {
-            Collect();
-        }
+            if (!(Vector3.Distance(transform.position, player.transform.position) <= collectionRange))
+            {
+                preventPickupUntilReset = false;
+            }
+        } else
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) <= collectionRange)
+            {
+                Collect();
+            }
+        }      
     }
 
     //What happens when the player gets close enough to pick the item up

@@ -8,4 +8,6 @@ public class GameUI : MonoBehaviour
 {
     [Header("Inventory")]
     public GameObject iventoryParentObject;
+    [Header("Equipped Weapon")]
+    public Image weaponIcon;
 }
