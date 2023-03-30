@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public AudioClip attackSFX;
-    public AudioClip dashSFX;
-
     [Header("Movement Values")]
     public float walkSpeed;
     public float turnSpeed; //represents degrees per second
@@ -23,10 +20,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 storedDashVelocity;
 
     private PlayerStatController statController;
+    private SoundPlayer soundPlayer;
 
     void Start()
     {
         statController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerStatController>();
+        soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
         dashing = false;
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
         //Check for dash input
         if (Input.GetKeyDown(KeyCode.LeftShift) && inputVector != Vector3.zero && !isDashing())
         {
-            AudioSource.PlayClipAtPoint(dashSFX, transform.position);
+            soundPlayer.PlaySound("dash");
             Dash();
         }
     }
@@ -102,7 +101,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Fire1") > 0)
         {
-            AudioSource.PlayClipAtPoint(attackSFX, transform.position);
+            soundPlayer.PlaySound("attack");
             attack.Attack();
         }
     }

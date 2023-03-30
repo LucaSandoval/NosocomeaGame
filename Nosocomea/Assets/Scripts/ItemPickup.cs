@@ -5,11 +5,12 @@ using UnityEngine;
 public class ItemPickup : Collectable
 {
     public Item item;
-    public AudioClip pickupSFX;
+    private SoundPlayer soundPlayer;
     public override void Collect()
     {
+        soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         inventoryController.PickupItem(item);
-        AudioSource.PlayClipAtPoint(pickupSFX, transform.position);
+        soundPlayer.PlaySound("pickup");
         Destroy(gameObject);
     }
 }

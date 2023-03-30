@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - GameUI
+  - SoundController
   layers:
   - Default
   - TransparentFX
