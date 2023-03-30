@@ -5,16 +5,21 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     public List<Item> currentItems;
+
     private GameUI gameUI;
     private GameObject itemListPrefab;
+    private GameObject itemSplashPrefab;
 
     private PlayerStatController statController;
+    private Canvas mainCanvas;
 
     void Start()
     {
+        mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         statController = GetComponent<PlayerStatController>();
         gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
         itemListPrefab = Resources.Load<GameObject>("ItemListPrefab");
+        itemSplashPrefab = Resources.Load<GameObject>("ItemSplash");
         currentItems = new List<Item>();
     }
 
@@ -31,6 +36,10 @@ public class InventoryController : MonoBehaviour
         newListItem.GetComponent<ItemListPrefab>().thisItem = item;
         newListItem.GetComponent<ItemListPrefab>().SetItemInfo();
         newListItem.transform.SetParent(gameUI.iventoryParentObject.transform, false);
+
+        GameObject newSplash = Instantiate(itemSplashPrefab);
+        newSplash.transform.SetParent(mainCanvas.transform, false);
+        newSplash.GetComponent<ItemSplash>().SetItem(item);
     }
 
     //Goes through all (passive) player items and calculates what their current stat block should be
