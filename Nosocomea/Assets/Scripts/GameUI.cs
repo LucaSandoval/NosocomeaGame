@@ -10,4 +10,11 @@ public class GameUI : MonoBehaviour
     public GameObject iventoryParentObject;
     [Header("Equipped Weapon")]
     public Image weaponIcon;
+    [Header("Stat Block")]
+    public Text speedText;
+    public Text strengthText;
+    public Text reachText;
+    public Text defenceText;
+    public Text healthText;
+    public Text quicknessText;
 }

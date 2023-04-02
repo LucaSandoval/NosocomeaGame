@@ -1345,7 +1345,7 @@ PrefabInstance:
     - target: {fileID: 3835467194322865661, guid: 80169a683eed4d24c9630a124d72dbf1, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 3c2f811b1153a7342a6bdc696c597f01, type: 2}
+      objectReference: {fileID: 11400000, guid: 27ca6bf6b632b854881255693c3522f4, type: 2}
     - target: {fileID: 3835467194322865662, guid: 80169a683eed4d24c9630a124d72dbf1, type: 3}
       propertyPath: m_Name
       value: TestItem

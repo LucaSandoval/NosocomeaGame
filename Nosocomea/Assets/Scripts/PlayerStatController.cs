@@ -13,15 +13,27 @@ public class PlayerStatController : MonoBehaviour
     public int quickness;
 
     private InventoryController inventoryController;
+    private GameUI gameUI;
 
     private void Awake()
     {
+        gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
         inventoryController = GetComponent<InventoryController>();
     }
 
     public void Start()
     {
         SetStatsBlock(GetBaseStats());
+    }
+
+    public void Update()
+    {
+        gameUI.speedText.text = speed.ToString();
+        gameUI.strengthText.text = strength.ToString();
+        gameUI.reachText.text = reach.ToString();
+        gameUI.defenceText.text = defence.ToString();
+        gameUI.healthText.text = health.ToString();
+        gameUI.quicknessText.text = quickness.ToString();
     }
 
     //stats the player starts a new run with
