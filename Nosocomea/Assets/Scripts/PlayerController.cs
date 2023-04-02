@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed; //represents degrees per second
     public float dashLength; //represents time (seconds) of dash
     public float dashPower;
+    public float dashCooldown; //in seconds
 
     private Rigidbody rb;
     private Vector3 inputVector;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     //Dash
     private bool dashing;
     private Vector3 storedDashVelocity;
+    private bool canDash;
 
     private PlayerStatController statController;
     private SoundPlayer soundPlayer;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
         dashing = false;
+        canDash = true;
     }
 
     private void Update()
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
         inputVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         //Check for dash input
-        if (Input.GetKeyDown(KeyCode.LeftShift) && inputVector != Vector3.zero && !isDashing())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && inputVector != Vector3.zero && !isDashing() && canDash)
         {
             soundPlayer.PlaySound("dash");
             Dash();
@@ -97,6 +100,12 @@ public class PlayerController : MonoBehaviour
         return walkSpeed * multiplier;
     }
 
+    private float CalcDashCooldown()
+    {
+        float multiplier = Mathf.Lerp(1, 0.1f, Mathf.InverseLerp(1, 20, statController.speed));
+        return dashCooldown * multiplier;
+    }
+
     private void Attack()
     {
         if (Input.GetAxisRaw("Fire1") > 0)
@@ -121,8 +130,11 @@ public class PlayerController : MonoBehaviour
     //Wait until dash is finished then return player control
     private IEnumerator DashTimer()
     {
+        canDash = false;
         dashing = true;
         yield return new WaitForSecondsRealtime(dashLength);
         dashing = false;
+        yield return new WaitForSecondsRealtime(CalcDashCooldown());
+        canDash = true;
     }
 }
