@@ -7,7 +7,10 @@ public class PlayerStatController : MonoBehaviour
     [Header("Player Stats")]
     public int speed;
     public int strength;
-    public int luck;
+    public int reach;
+    public int defence;
+    public int health;
+    public int quickness;
 
     private InventoryController inventoryController;
 
@@ -24,7 +27,7 @@ public class PlayerStatController : MonoBehaviour
     //stats the player starts a new run with
     public int[] GetBaseStats()
     {
-        return new int[3] { 1, 1, 1 };
+        return new int[6] { 1, 1, 1, 1, 1, 1 };
     }
 
     //Set stats as a block
@@ -32,14 +35,9 @@ public class PlayerStatController : MonoBehaviour
     {
         speed = stats[0];
         strength = stats[1];
-        luck = stats[2];
+        reach = stats[2];
+        defence = stats[3];
+        health = stats[4];
+        quickness = stats[5];
     }
-}
-
-[System.Serializable]
-public enum playerStats
-{
-    speed,
-    strength,
-    luck
 }

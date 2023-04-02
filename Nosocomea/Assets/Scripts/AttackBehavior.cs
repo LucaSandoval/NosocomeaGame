@@ -10,24 +10,38 @@ public class AttackBehavior : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float attackLength;
 
+    private SoundPlayer soundPlayer;
+    private PlayerStatController statController;
+    private InventoryController inventoryController;
+
+    private bool canAttack;
+
     void Start()
     {
+        soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
+        statController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerStatController>();
+        inventoryController = GameObject.FindGameObjectWithTag("GameController").GetComponent<InventoryController>();
+
         if (attackField == null)
         {
             attackField = GetComponentInChildren<Collider>();
         }
 
+        canAttack = true;
         attackDisplay.SetActive(false);
     }
 
     public void Attack()
     {
         // Do nothing if the coroutine is already running
-        if (attackDisplay.activeSelf)
+        if (canAttack == false)
         {
             return;
         }
 
+        canAttack = false;
+
+        soundPlayer.PlaySound("attack");
         attackDisplay.SetActive(true);
 
         // Destroy anything in the attack field
@@ -45,7 +59,30 @@ public class AttackBehavior : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        yield return new WaitForSeconds(attackLength);
+        yield return new WaitForSecondsRealtime(attackLength);
         attackDisplay.SetActive(false);
+
+        float finalDelay = CalculateAttackSpeed() - attackLength;
+        if (finalDelay < 0)
+        {
+            finalDelay = 0;
+        }
+
+        yield return new WaitForSecondsRealtime(finalDelay);
+        canAttack = true;
+    }
+
+
+    private float CalculateAttackSpeed()
+    {
+        float multiplier = Mathf.Lerp(1, 0.2f, Mathf.InverseLerp(1, 20, statController.quickness));
+        float baseSpeed = 0.75f;
+
+        if (inventoryController.equippedWeapon != null)
+        {
+            baseSpeed = inventoryController.equippedWeapon.attackSpeed;
+        }
+
+        return baseSpeed * multiplier;
     }
 }

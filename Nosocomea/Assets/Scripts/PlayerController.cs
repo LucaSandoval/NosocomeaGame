@@ -101,7 +101,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetAxisRaw("Fire1") > 0)
         {
-            soundPlayer.PlaySound("attack");
             attack.Attack();
         }
     }
