@@ -98,6 +98,16 @@ public class InventoryController : MonoBehaviour
             {
                 //Speed
                 finalStatBlock[0] += ((PassiveItem)currentItems[i]).speed;
+                //Strength
+                finalStatBlock[1] += ((PassiveItem)currentItems[i]).strength;
+                //Reach
+                finalStatBlock[2] += ((PassiveItem)currentItems[i]).reach;
+                //Defence
+                finalStatBlock[3] += ((PassiveItem)currentItems[i]).defence;
+                //Health
+                finalStatBlock[4] += ((PassiveItem)currentItems[i]).health;
+                //Quickness
+                finalStatBlock[5] += ((PassiveItem)currentItems[i]).quickness;
             }
         }
 
