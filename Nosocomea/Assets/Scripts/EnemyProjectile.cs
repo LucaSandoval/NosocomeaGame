@@ -33,4 +33,12 @@ public class EnemyProjectile : MonoBehaviour
 
         transform.localScale = new Vector3(1 * sizeMult, 1 * sizeMult, 1 * sizeMult);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "Enemy" && other.tag != "Projectile")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

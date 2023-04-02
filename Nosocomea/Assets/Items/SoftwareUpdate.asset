@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c99a429dfa96d945b1b16fea83f973c, type: 3}
-  m_Name: Test Passive
+  m_Name: SoftwareUpdate
   m_EditorClassIdentifier: 
-  itemName: Speed Disk
-  itemDescription: Test item description.
-  itemIcon: {fileID: 0}
-  speed: 1
+  itemName: Software Update
+  itemDescription: 'Attacking feels less buggy? '
+  itemIcon: {fileID: 21300000, guid: f22392a8656cc0c4c91d37de355b26f6, type: 3}
+  speed: 0
   strength: 0
   reach: 0
   defence: 0
   health: 0
-  quickness: 5
+  quickness: 1

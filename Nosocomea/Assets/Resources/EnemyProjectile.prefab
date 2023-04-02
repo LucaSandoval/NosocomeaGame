@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 151706956815756453}
   m_Layer: 0
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +130,4 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   sizeMult: 0
+  trackPlayer: 0
