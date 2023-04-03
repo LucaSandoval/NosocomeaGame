@@ -682,11 +682,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d22186e35ff3003458c11d1075177689, type: 3}
---- !u!4 &742554408 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7968639970605132260, guid: d22186e35ff3003458c11d1075177689, type: 3}
-  m_PrefabInstance: {fileID: 713739262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867932607
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232c48ad9ebb34d0da2903300a54f615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 742554408}
+  target: {fileID: 2022845778}
   offset: {x: 8.49, y: 9.17, z: 8.12}
   moveSpeed: 5
 --- !u!81 &1441485088
@@ -1364,6 +1359,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2022845778 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6763507882778360273, guid: d22186e35ff3003458c11d1075177689, type: 3}
+  m_PrefabInstance: {fileID: 713739262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2278716072228405335
 PrefabInstance:
   m_ObjectHideFlags: 0

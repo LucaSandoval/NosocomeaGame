@@ -39,8 +39,11 @@ public class PlayerHealthController : AbstractDamageable
 
     public void TryHitPlayer(float damage)
     {
-        float reducedDamage = Mathf.Lerp(1, 0.1f, Mathf.InverseLerp(1, 20, statController.defence));
+        float reducedDamage = damage * Mathf.Lerp(1, 0.1f, Mathf.InverseLerp(1, 20, statController.defence));
         reducedDamage = Mathf.Round(reducedDamage);
+
+
+        PopupTextController.SpawnPopupText(reducedDamage.ToString(), transform.localPosition);
         ApplyDamage(reducedDamage);
     }
 
