@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyProjectileController : MonoBehaviour
 {
     public bool active;
+    public Transform firePos;
 
     public EnemyProjectileAttack[] attacks;
     
@@ -19,6 +20,7 @@ public class EnemyProjectileController : MonoBehaviour
     private float curFireRateTimer;
 
     private GameObject enemyProjectilePrefab;
+    private SoundPlayer soundPlayer;
 
     [System.Serializable]
     public struct EnemyProjectileAttack
@@ -30,6 +32,7 @@ public class EnemyProjectileController : MonoBehaviour
     private void Start()
     {
         //active = false;
+        soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         enemyProjectilePrefab = Resources.Load<GameObject>("EnemyProjectile");
         attackID = 0;
         SetCurrentAttack(0);
@@ -59,7 +62,8 @@ public class EnemyProjectileController : MonoBehaviour
     //Fires all bullets at the same time 
     private void PulseBullets()
     {
-        switch(currentAttack.data.spread)
+        soundPlayer.PlaySound("shoot");
+        switch (currentAttack.data.spread)
         {
             case SpreadType.single:
                 FireBullet(0);
@@ -86,7 +90,7 @@ public class EnemyProjectileController : MonoBehaviour
     private void FireBullet(float angle)
     {
         GameObject newBullet = Instantiate(enemyProjectilePrefab);
-        newBullet.transform.position = transform.position;
+        newBullet.transform.position = firePos.position;
 
         if (angle != 0)
         {

@@ -36,9 +36,14 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy" && other.tag != "Projectile")
+        if (other.tag == "Player")
         {
-            Destroy(gameObject);
+            if (!other.gameObject.GetComponent<PlayerController>().isDashing())
+            {
+                PlayerHealthController script = other.gameObject.GetComponent<PlayerHealthController>();
+                script.TryHitPlayer(5);
+                Destroy(gameObject);
+            }           
         }
     }
 }

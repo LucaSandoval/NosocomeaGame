@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    AnimationManager _animationManager;
+    private float moveAmount;
     [Header("Movement Values")]
     public float walkSpeed;
     public float turnSpeed; //represents degrees per second
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStatController statController;
     private SoundPlayer soundPlayer;
+    
 
     void Start()
     {
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
+        _animationManager = GetComponent<AnimationManager>();
         dashing = false;
         canDash = true;
     }
@@ -39,7 +44,10 @@ public class PlayerController : MonoBehaviour
         GetInput();
         Look();
         Attack();
+        Animate();
     }
+
+    
 
     private void FixedUpdate()
     {
@@ -111,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Fire1") > 0)
         {
             attack.Attack();
+            _animationManager.PlayTargetAnimation("Attack0");
         }
     }
 
@@ -136,5 +145,11 @@ public class PlayerController : MonoBehaviour
         dashing = false;
         yield return new WaitForSecondsRealtime(CalcDashCooldown());
         canDash = true;
+    }
+
+    private void Animate()
+    {
+        moveAmount = Mathf.Clamp01(Mathf.Abs(inputVector.magnitude));
+        _animationManager.UpdateAnimatorValues(moveAmount);
     }
 }

@@ -49,4 +49,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73778ed40f9fc764e8ce905afb148c5a, type: 2}
   - {fileID: 11400000, guid: 682765aea7d5c3345b161960baf66c3d, type: 2}
   - {fileID: 11400000, guid: 2a8f3c53c79e9d741abc4a0bd2b62f1f, type: 2}
+  - {fileID: 11400000, guid: e699a67506c3c14429019d03d84d45ac, type: 2}
+  - {fileID: 11400000, guid: a270a7dd9fb597e43bda9e9d13f0b5ac, type: 2}
+  - {fileID: 11400000, guid: cc6b328a9bca39b459cb76d1b1409ace, type: 2}
   layeredSounds: []

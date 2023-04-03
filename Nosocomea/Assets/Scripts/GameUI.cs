@@ -17,4 +17,7 @@ public class GameUI : MonoBehaviour
     public Text defenceText;
     public Text healthText;
     public Text quicknessText;
+    [Header("Health Bar")]
+    public Slider healthBarSlider;
+    public Text healthBarNum;
 }

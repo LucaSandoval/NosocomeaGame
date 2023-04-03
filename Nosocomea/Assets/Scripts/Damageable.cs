@@ -9,4 +9,7 @@ public interface Damageable
 
   // Is the object destroyed?
   bool IsDestroyed();
+
+    //Sets the Damageable's health number 
+    void SetHealth(float ammount);
 }
