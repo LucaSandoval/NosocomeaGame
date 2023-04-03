@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    AnimationManager _animationManager;
+    private float moveAmount;
     [Header("Movement Values")]
     public float walkSpeed;
     public float turnSpeed; //represents degrees per second
@@ -23,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStatController statController;
     private SoundPlayer soundPlayer;
+    private void Awake()
+    {
+        _animationManager = GetComponent<AnimationManager>();
+    }
 
     void Start()
     {
@@ -39,7 +46,10 @@ public class PlayerController : MonoBehaviour
         GetInput();
         Look();
         Attack();
+        Animate();
     }
+
+    
 
     private void FixedUpdate()
     {
@@ -136,5 +146,11 @@ public class PlayerController : MonoBehaviour
         dashing = false;
         yield return new WaitForSecondsRealtime(CalcDashCooldown());
         canDash = true;
+    }
+
+    private void Animate()
+    {
+        moveAmount = Mathf.Clamp01(Mathf.Abs(inputVector.magnitude));
+        _animationManager.UpdateAnimatorValues(moveAmount);
     }
 }
