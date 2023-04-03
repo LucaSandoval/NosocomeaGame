@@ -1042,6 +1042,7 @@ MonoBehaviour:
   - {fileID: 5139373763941988316, guid: f204d8df19d4f463ebdba9ee4cfd5a64, type: 3}
   - {fileID: 5139373763941988316, guid: 61d2a1b0338c84ea9820e3a7780292cc, type: 3}
   - {fileID: 5139373763941988316, guid: 568fc61909f7f48349f040c9af2db461, type: 3}
+  - {fileID: 5139373763941988316, guid: 6b025e3d5114344938d0b301b00b4a2e, type: 3}
   offsetX: 3.5
   offsetY: -1
   offsetZ: 1.5
