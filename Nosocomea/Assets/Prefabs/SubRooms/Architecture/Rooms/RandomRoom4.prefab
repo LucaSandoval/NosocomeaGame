@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: coreholdmod1
       objectReference: {fileID: 0}
+    - target: {fileID: 8069569534387375701, guid: abfff513037c94b94ab12f0c010a2410, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84ce6fb145b944a238a68cbae79ac800, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abfff513037c94b94ab12f0c010a2410, type: 3}
 --- !u!4 &4423185587483957176 stripped
