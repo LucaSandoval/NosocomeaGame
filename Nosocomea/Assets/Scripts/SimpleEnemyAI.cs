@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleEnemyAI : MonoBehaviour
 {
+    AnimationManager _animationManager;
     public SimpleAIState state;
     private Rigidbody rb;
     private GameObject player;
@@ -27,7 +28,7 @@ public class SimpleEnemyAI : MonoBehaviour
         projectileController = GetComponent<EnemyProjectileController>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
-
+        _animationManager = GetComponent<AnimationManager>();
         state = SimpleAIState.Chase;
         startPos = transform.position;
         moveSpeed = wanderSpeed;
@@ -36,6 +37,7 @@ public class SimpleEnemyAI : MonoBehaviour
 
     private void Update()
     {
+        Animate();
         switch(state)
         {
             case SimpleAIState.Wander:
@@ -106,6 +108,17 @@ public class SimpleEnemyAI : MonoBehaviour
     {
         float range = 3;
         randPos = new Vector3(startPos.x + Random.Range(-range, range), transform.position.y, startPos.z + Random.Range(-range, range));
+    }
+    private void Animate()
+    {
+        if (moving)
+        {
+            _animationManager.UpdateAnimatorValues(1);
+        } else
+        {
+            _animationManager.UpdateAnimatorValues(0);
+        }
+        
     }
 }
 

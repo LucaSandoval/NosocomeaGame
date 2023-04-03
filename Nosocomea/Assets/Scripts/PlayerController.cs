@@ -26,10 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStatController statController;
     private SoundPlayer soundPlayer;
-    private void Awake()
-    {
-        _animationManager = GetComponent<AnimationManager>();
-    }
+    
 
     void Start()
     {
@@ -37,6 +34,7 @@ public class PlayerController : MonoBehaviour
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         rb = GetComponent<Rigidbody>();
         attack = GetComponent<AttackBehavior>();
+        _animationManager = GetComponent<AnimationManager>();
         dashing = false;
         canDash = true;
     }
