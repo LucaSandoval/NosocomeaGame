@@ -18,4 +18,9 @@ public abstract class AbstractDamageable : MonoBehaviour, Damageable
   {
     return health <= 0;
   }
+
+    public void SetHealth(float ammount)
+    {
+        health = ammount;
+    }
 }

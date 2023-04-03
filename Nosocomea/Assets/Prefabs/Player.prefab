@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 7968639970605132256}
   - component: {fileID: 7968639970605132257}
   - component: {fileID: 3483575209659617891}
+  - component: {fileID: 6843360712688645961}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -357,12 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d04f9c52bd874241a33950282c0dbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSFX: {fileID: 8300000, guid: c566583f21581544f92f56f29a4683f3, type: 3}
-  dashSFX: {fileID: 8300000, guid: 2e04c48bec3e83d4f9e7595c1198780e, type: 3}
   walkSpeed: 300
   turnSpeed: 1080
   dashLength: 0.15
   dashPower: 1000
+  dashCooldown: 0
 --- !u!114 &3483575209659617891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,3 +378,16 @@ MonoBehaviour:
   attackDisplay: {fileID: 1085451558404190815}
   attackField: {fileID: 4666197097900010682}
   attackLength: 0.2
+--- !u!114 &6843360712688645961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968639970605132062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49eaa530ffd65d147b4b5ecda2cfe08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHealth: 0
