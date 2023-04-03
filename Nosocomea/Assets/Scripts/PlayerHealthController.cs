@@ -43,7 +43,7 @@ public class PlayerHealthController : AbstractDamageable
         reducedDamage = Mathf.Round(reducedDamage);
 
 
-        PopupTextController.SpawnPopupText(reducedDamage.ToString(), transform.localPosition);
+        //PopupTextController.SpawnPopupText(reducedDamage.ToString(), transform.localPosition);
         ApplyDamage(reducedDamage);
     }
 

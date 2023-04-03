@@ -48,13 +48,26 @@ public class AttackBehavior : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(attackField.bounds.center, attackField.bounds.size);
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.CompareTag("Enemy"))
+            if (hitCollider.gameObject.CompareTag("Enemy") || hitCollider.gameObject.CompareTag("Projectile"))
             {
-                Destroy(hitCollider.gameObject);
+                EnemyHealth script = hitCollider.gameObject.GetComponent<EnemyHealth>();
+                script.ApplyDamage(CalculateDamage());
             }
         }
 
         StartCoroutine(AttackRoutine());
+    }
+
+    private float CalculateDamage()
+    {
+        float multiplier = Mathf.Lerp(1, 5, Mathf.InverseLerp(1, 20, statController.strength));
+        float baseDamage = 2;
+        if (inventoryController.equippedWeapon != null)
+        {
+            baseDamage = inventoryController.equippedWeapon.damage;
+        }
+
+        return baseDamage * multiplier;
     }
 
     IEnumerator AttackRoutine()
