@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RandomizerRoom : MonoBehaviour
 {
-    public GameObject[] roomPrefabs; // Array of room prefabs to choose from
     public float offsetX = 0f; // X offset
     public float offsetY = 0f; // Y offset
     public float offsetZ = 0f; // Z offset

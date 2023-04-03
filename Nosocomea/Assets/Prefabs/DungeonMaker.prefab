@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5948753877196811058}
   - component: {fileID: 5948753877196811061}
   - component: {fileID: 5948753877196811060}
+  - component: {fileID: 541814138702867596}
   m_Layer: 0
   m_Name: DungeonMaker
   m_TagString: Untagged
@@ -122,3 +123,25 @@ MonoBehaviour:
   hallwayXOffsetEW: 7
   hallwayYOffsetEW: -1
   hallwayZOffsetNS: 4
+--- !u!114 &541814138702867596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948753877196811063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3bfe9476513335c6a16d2c4b3e65168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 0
+  yOffset: 0
+  zOffset: 0
+  genericWeight: 0
+  lootWeight: 0
+  enemyWeight: 0
+  genericRooms: []
+  lootRooms: []
+  enemyRooms: []
+  bossRooms: []

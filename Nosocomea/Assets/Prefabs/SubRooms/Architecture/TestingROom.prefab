@@ -988,7 +988,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2213836226492289586}
-  - component: {fileID: 1252941161154148786}
   m_Layer: 0
   m_Name: TestingROom
   m_TagString: Untagged
@@ -1022,32 +1021,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1252941161154148786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2722731893477818550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bf7ca15712749ad8119cfdaf26ae5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomPrefabs:
-  - {fileID: 6226528213532802544, guid: a01347dd26cca4f4c8583e9efc4dd467, type: 3}
-  - {fileID: 5315731527439900383, guid: 44ab1a5c56be0495797d5cf1296df099, type: 3}
-  - {fileID: 3327605018682935409, guid: a5bbcfa70edf7408c9ca7b446de4a43c, type: 3}
-  - {fileID: 3534276895447311844, guid: 00caf510264bf40559e0d594a9f20fdb, type: 3}
-  - {fileID: 5139373763941988316, guid: f204d8df19d4f463ebdba9ee4cfd5a64, type: 3}
-  - {fileID: 5139373763941988316, guid: 61d2a1b0338c84ea9820e3a7780292cc, type: 3}
-  - {fileID: 5139373763941988316, guid: 568fc61909f7f48349f040c9af2db461, type: 3}
-  - {fileID: 5139373763941988316, guid: 6b025e3d5114344938d0b301b00b4a2e, type: 3}
-  - {fileID: 5139373763941988316, guid: 6b025e3d5114344938d0b301b00b4a2e, type: 3}
-  - {fileID: 5139373763941988316, guid: 98be2c469d7ed40559074829a9703166, type: 3}
-  offsetX: 3.5
-  offsetY: -1
-  offsetZ: 1.5
 --- !u!1 &3299143604306850209
 GameObject:
   m_ObjectHideFlags: 0
