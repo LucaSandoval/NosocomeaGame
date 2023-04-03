@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Fire1") > 0)
         {
             attack.Attack();
+            _animationManager.PlayTargetAnimation("Attack0");
         }
     }
 
