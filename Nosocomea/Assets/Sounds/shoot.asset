@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff96aa1a13103604385b59654a5e9c33, type: 3}
   m_Name: shoot
   m_EditorClassIdentifier: 
-  soundName: 
-  clip: {fileID: 0}
-  baseVolume: 1
+  soundName: shoot
+  clip: {fileID: 8300000, guid: e7623deaeecb7e8499ce01471409993f, type: 3}
+  baseVolume: 0.5
   basePitch: 1
   loop: 0
   audioMixerGroup: {fileID: 0}

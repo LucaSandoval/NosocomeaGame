@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyProjectileController : MonoBehaviour
 {
     public bool active;
+    public Transform firePos;
 
     public EnemyProjectileAttack[] attacks;
     
@@ -89,7 +90,7 @@ public class EnemyProjectileController : MonoBehaviour
     private void FireBullet(float angle)
     {
         GameObject newBullet = Instantiate(enemyProjectilePrefab);
-        newBullet.transform.position = transform.position;
+        newBullet.transform.position = firePos.position;
 
         if (angle != 0)
         {
