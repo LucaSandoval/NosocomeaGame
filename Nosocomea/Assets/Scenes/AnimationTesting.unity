@@ -1845,6 +1845,7 @@ GameObject:
   - component: {fileID: 7943045757654161191}
   - component: {fileID: 7943045757654161190}
   - component: {fileID: 7943045757654161189}
+  - component: {fileID: 7943045757654161192}
   m_Layer: 0
   m_Name: NosocomeaPlayer
   m_TagString: Player
@@ -1998,7 +1999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3715648295782832100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2359962, y: 1.59, z: -0.3864212}
+  m_LocalPosition: {x: 1.2359962, y: 0.6, z: -0.3864212}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2518,6 +2519,18 @@ CapsuleCollider:
   m_Height: 0.06
   m_Direction: 1
   m_Center: {x: 0, y: 0.03, z: 0}
+--- !u!114 &7943045757654161192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715648295782832100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d027d6361b953b748a2d18d04731f0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7968639970161140250
 Transform:
   m_ObjectHideFlags: 0
