@@ -138,10 +138,34 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   zOffset: 0
-  genericWeight: 0
-  lootWeight: 0
-  enemyWeight: 0
-  genericRooms: []
-  lootRooms: []
-  enemyRooms: []
-  bossRooms: []
+  genericWeight: 0.2
+  lootWeight: 0.4
+  enemyWeight: 0.4
+  genericRooms:
+  - {fileID: 3534276895447311844, guid: 00caf510264bf40559e0d594a9f20fdb, type: 3}
+  - {fileID: 3327605018682935409, guid: a5bbcfa70edf7408c9ca7b446de4a43c, type: 3}
+  - {fileID: 5315731527439900383, guid: 44ab1a5c56be0495797d5cf1296df099, type: 3}
+  - {fileID: 6226528213532802544, guid: a01347dd26cca4f4c8583e9efc4dd467, type: 3}
+  - {fileID: 5139373763941988316, guid: f204d8df19d4f463ebdba9ee4cfd5a64, type: 3}
+  - {fileID: 5139373763941988316, guid: 61d2a1b0338c84ea9820e3a7780292cc, type: 3}
+  - {fileID: 5139373763941988316, guid: 568fc61909f7f48349f040c9af2db461, type: 3}
+  - {fileID: 5139373763941988316, guid: fb835bbb129cf447f8789be1ee0e2a3b, type: 3}
+  - {fileID: 5139373763941988316, guid: 6b025e3d5114344938d0b301b00b4a2e, type: 3}
+  - {fileID: 5139373763941988316, guid: 98be2c469d7ed40559074829a9703166, type: 3}
+  lootRooms:
+  - {fileID: 3534276895447311844, guid: 09fce09b23a1eda08a463620c0733300, type: 3}
+  - {fileID: 3327605018682935409, guid: 6c1ace75604d9ddbc96918d91b96aa2d, type: 3}
+  - {fileID: 5315731527439900383, guid: 27db84c6d984b903c8d4212b550266e7, type: 3}
+  - {fileID: 6226528213532802544, guid: dc32ff3bd9e3294a79a64601f5825751, type: 3}
+  - {fileID: 5139373763941988316, guid: 281c37e4888932d43b5f4226acf6e2ea, type: 3}
+  - {fileID: 5139373763941988316, guid: 3b00a70ee5180739a92d6d20094d0b38, type: 3}
+  - {fileID: 5139373763941988316, guid: c54d18e7cd4e73f24a50bfa6e476677b, type: 3}
+  enemyRooms:
+  - {fileID: 5315731527439900383, guid: ca266a03d276494a480431982b7d96f8, type: 3}
+  - {fileID: 5139373763941988316, guid: 2e79290527a95dccbabf15fd71665762, type: 3}
+  - {fileID: 5139373763941988316, guid: cb8cc92e798daf28083e222ddc26aef5, type: 3}
+  - {fileID: 5139373763941988316, guid: ea9beb55e5c29b55caf8ee76d833140f, type: 3}
+  - {fileID: 5139373763941988316, guid: eda6f874097f2a0079b2ff20b9eb471f, type: 3}
+  - {fileID: 5139373763941988316, guid: 4a8973b553dcd5f0db710aacee8f056c, type: 3}
+  bossRooms:
+  - {fileID: 3327605018682935409, guid: a5bbcfa70edf7408c9ca7b446de4a43c, type: 3}
