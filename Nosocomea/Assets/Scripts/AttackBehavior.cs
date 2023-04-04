@@ -61,7 +61,7 @@ public class AttackBehavior : MonoBehaviour
     private float CalculateDamage()
     {
         float multiplier = Mathf.Lerp(1, 5, Mathf.InverseLerp(1, 20, statController.strength));
-        float baseDamage = 2;
+        float baseDamage = 4;
         if (inventoryController.equippedWeapon != null)
         {
             baseDamage = inventoryController.equippedWeapon.damage;
