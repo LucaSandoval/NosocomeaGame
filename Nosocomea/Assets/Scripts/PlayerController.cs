@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         _animationManager = GetComponent<AnimationManager>();
         dashing = false;
         canDash = true;
+        soundPlayer.PlaySound("song");
     }
 
     private void Update()
