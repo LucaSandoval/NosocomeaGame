@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.028332433
       objectReference: {fileID: 0}
+    - target: {fileID: 5418083386496020634, guid: bce13df864b08d642a87efb06e75660e, type: 3}
+      propertyPath: maxHealth
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5418083386496020635, guid: bce13df864b08d642a87efb06e75660e, type: 3}
       propertyPath: firePos
       value: 

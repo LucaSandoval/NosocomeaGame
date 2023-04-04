@@ -41,7 +41,7 @@ public class EnemyProjectile : MonoBehaviour
             if (!other.gameObject.GetComponent<PlayerController>().isDashing())
             {
                 PlayerHealthController script = other.gameObject.GetComponent<PlayerHealthController>();
-                script.TryHitPlayer(5);
+                script.TryHitPlayer(1);
                 Destroy(gameObject);
             }           
         }
