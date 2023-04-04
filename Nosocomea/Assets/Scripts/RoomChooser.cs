@@ -24,7 +24,7 @@ public class RoomChooser : MonoBehaviour
   {
     List<GameObject> roomsList = new List<GameObject>();
 
-    for (int currentRoom = 0; currentRoom < rooms; currentRoom++)
+    for (int currentRoom = 1; currentRoom <= rooms; currentRoom++)
     {
       GameObject room = GetNextRoom(currentRoom, rooms);
       roomsList.Add(room);
