@@ -20,4 +20,6 @@ public class GameUI : MonoBehaviour
     [Header("Health Bar")]
     public Slider healthBarSlider;
     public Text healthBarNum;
+    [Header("Level Win")]
+    public GameObject levelWinObject;
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff96aa1a13103604385b59654a5e9c33, type: 3}
-  m_Name: song
+  m_Name: win
   m_EditorClassIdentifier: 
-  soundName: song
-  clip: {fileID: 8300000, guid: 52c4929a4d2047741b00dc1a455e2607, type: 3}
-  baseVolume: 0.6
+  soundName: win
+  clip: {fileID: 8300000, guid: 087651634a21b974c80d41d74b9de766, type: 3}
+  baseVolume: 3
   basePitch: 1
-  loop: 1
+  loop: 0
   audioMixerGroup: {fileID: 0}
   source: {fileID: 0}
