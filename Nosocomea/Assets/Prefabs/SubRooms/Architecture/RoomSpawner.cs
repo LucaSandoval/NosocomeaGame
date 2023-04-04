@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class RoomSpawner : MonoBehaviour
 {
+  [Header("Rooms")]
   public GameObject roomPrefab; // prefab of the room to spawn
   public GameObject hallwayPrefab; // prefab of the hallway to spawn
   public int rows = 3; // number of rows of rooms
   public int columns = 3; // number of columns of rooms
   public float roomSpacing = 10f; // distance between each room
+
+  [Header("Hallways")]
   public float hallwayLength = 10f; // length of each hallway
   public float hallwayXOffset = 0f; // x offset for the hallway
   public float hallwayYOffset = 0f; // y offset for the hallway
@@ -16,6 +19,9 @@ public class RoomSpawner : MonoBehaviour
   public float hallwayXOffsetEW = 0f; // x offset for east-west hallways
   public float hallwayYOffsetEW = 0f; // y offset for east-west hallways
   public float hallwayZOffsetNS = 0f; // z offset for north-south hallways
+
+  [Header("Ineriors")]
+  public Vector3 interiorOffset = new Vector3(1.5f, -2f, 0.5f); // offset for the interiors
 
   private List<GameObject> spawnedRooms = new List<GameObject>(); // list to store spawned rooms
   private List<GameObject> interiors = new List<GameObject>();
@@ -33,7 +39,7 @@ public class RoomSpawner : MonoBehaviour
         GameObject currentRoom = Instantiate(roomPrefab, roomPos, Quaternion.identity);
 
         // Build the interior
-        Instantiate(interiors[row * columns + col], roomPos, Quaternion.identity);
+        Instantiate(interiors[row * columns + col], roomPos + interiorOffset, Quaternion.identity);
 
         spawnedRooms.Add(currentRoom);
 

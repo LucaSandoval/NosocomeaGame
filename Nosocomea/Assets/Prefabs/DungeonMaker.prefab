@@ -123,6 +123,7 @@ MonoBehaviour:
   hallwayXOffsetEW: 7
   hallwayYOffsetEW: -1
   hallwayZOffsetNS: 4
+  interiorOffset: {x: 2, y: -2, z: 0.5}
 --- !u!114 &541814138702867596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,9 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bfe9476513335c6a16d2c4b3e65168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xOffset: 0
-  yOffset: 0
-  zOffset: 0
   genericWeight: 0.2
   lootWeight: 0.4
   enemyWeight: 0.4
@@ -168,4 +166,4 @@ MonoBehaviour:
   - {fileID: 5139373763941988316, guid: eda6f874097f2a0079b2ff20b9eb471f, type: 3}
   - {fileID: 5139373763941988316, guid: 4a8973b553dcd5f0db710aacee8f056c, type: 3}
   bossRooms:
-  - {fileID: 3327605018682935409, guid: a5bbcfa70edf7408c9ca7b446de4a43c, type: 3}
+  - {fileID: 2722731893477818550, guid: d1c3675deaf8d5164a7e9d860f93a69e, type: 3}

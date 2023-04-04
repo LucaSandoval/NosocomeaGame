@@ -1145,6 +1145,7 @@ MonoBehaviour:
   hallwayXOffsetEW: 0
   hallwayYOffsetEW: 0
   hallwayZOffsetNS: 0
+  interiorOffset: {x: 1.5, y: -2, z: 0.5}
 --- !u!43 &739229822
 Mesh:
   m_ObjectHideFlags: 0
@@ -9444,10 +9445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 541814138702867596, guid: 7ad8eb961f4134718bdc11e02388d0af, type: 3}
-      propertyPath: bossRooms.Array.data[0]
-      value: 
-      objectReference: {fileID: 2722731893477818550, guid: d1c3675deaf8d5164a7e9d860f93a69e, type: 3}
     - target: {fileID: 5948753877196811056, guid: 7ad8eb961f4134718bdc11e02388d0af, type: 3}
       propertyPath: m_RootOrder
       value: 3

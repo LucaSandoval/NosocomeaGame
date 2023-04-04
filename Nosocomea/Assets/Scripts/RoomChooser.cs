@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class RoomChooser : MonoBehaviour
 {
-  [Header("Room Generation Settings")]
-  [SerializeField] private float xOffset = 0f; // X offset
-  [SerializeField] private float yOffset = 0f; // Y offset
-  [SerializeField] private float zOffset = 0f; // Z offset
-
   [Header("Room Weights")]
   [SerializeField] private float genericWeight;
   [SerializeField] private float lootWeight;

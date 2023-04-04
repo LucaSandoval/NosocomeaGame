@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 710172824462525167}
   - component: {fileID: 1031802700650727558}
-  - component: {fileID: 906551176523179625}
   m_Layer: 0
   m_Name: Floppy Disk Blue
   m_TagString: Untagged
@@ -25,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184888134189307989}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26334953, y: 1.141, z: 3.3395433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.088630006, y: 0.088630006, z: 0.221575}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55,20 +54,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &906551176523179625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184888134189307989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14c9489fa669420449f76fb82db7ca26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 27ca6bf6b632b854881255693c3522f4, type: 2}
-  pickupSFX: {fileID: 8300000, guid: cdd8984775f97bd40a58eb392f49fd7c, type: 3}
 --- !u!1 &9159496076349841548
 GameObject:
   m_ObjectHideFlags: 0
