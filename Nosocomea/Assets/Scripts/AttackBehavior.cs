@@ -4,8 +4,9 @@ using UnityEngine;
 public class AttackBehavior : MonoBehaviour
 {
     [Header("GameObjects")]
-    [SerializeField] private GameObject attackDisplay;
+    [SerializeField] private GameObject attackRotation;
     [SerializeField] private Collider attackField;
+    private GameObject attackDisplayPrefab;
 
     [Header("Attributes")]
     [SerializeField] private float attackLength;
@@ -28,7 +29,7 @@ public class AttackBehavior : MonoBehaviour
         }
 
         canAttack = true;
-        attackDisplay.SetActive(false);
+        attackDisplayPrefab = Resources.Load<GameObject>("AttackDisplayPrefab");
     }
 
     public void Attack()
@@ -42,7 +43,25 @@ public class AttackBehavior : MonoBehaviour
         canAttack = false;
 
         soundPlayer.PlaySound("attack");
-        attackDisplay.SetActive(true);
+        
+
+        //Set the rotation of the attack 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 clickPosition = hit.point;
+            Vector3 targetPos = new Vector3(clickPosition.x, attackRotation.transform.position.y, clickPosition.z);
+            attackRotation.transform.LookAt(targetPos);
+
+            GameObject newAttackDisplay = Instantiate(attackDisplayPrefab);
+            newAttackDisplay.transform.GetChild(0).GetComponent<AttackAnimation>().attackLength = attackLength;
+            newAttackDisplay.transform.position = attackField.transform.position;
+            newAttackDisplay.transform.rotation = attackField.transform.rotation;
+
+        }
+        
+
 
         // Destroy anything in the attack field
         Collider[] hitColliders = Physics.OverlapBox(attackField.bounds.center, attackField.bounds.size);
@@ -73,7 +92,6 @@ public class AttackBehavior : MonoBehaviour
     IEnumerator AttackRoutine()
     {
         yield return new WaitForSecondsRealtime(attackLength);
-        attackDisplay.SetActive(false);
 
         float finalDelay = CalculateAttackSpeed() - attackLength;
         if (finalDelay < 0)

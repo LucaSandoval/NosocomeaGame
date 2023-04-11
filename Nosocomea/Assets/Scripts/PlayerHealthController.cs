@@ -55,6 +55,6 @@ public class PlayerHealthController : AbstractDamageable
     private void Die()
     {
         //do something idk
-        Debug.Log("player dead");
+        LevelManager.instance.RestartLevel();
     }
 }
