@@ -86,7 +86,7 @@ public class AttackBehavior : MonoBehaviour
             baseDamage = inventoryController.equippedWeapon.damage;
         }
 
-        return baseDamage * multiplier;
+        return (int)(baseDamage * multiplier);
     }
 
     IEnumerator AttackRoutine()
