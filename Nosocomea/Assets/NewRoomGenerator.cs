@@ -19,10 +19,7 @@ public class NewRoomGenerator : MonoBehaviour
     {
         newRoomPrefab = Resources.Load<GameObject>("NewRoom");
         player = GameObject.FindGameObjectWithTag("Player");
-    }
 
-    public void Start()
-    {
         GenerateRooms();
         //Place player in start room 
         for (int y = 0; y < size; y++)
@@ -35,6 +32,11 @@ public class NewRoomGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Start()
+    {
+        
     }
 
     private void Update()

@@ -41,6 +41,7 @@ public class NewRoom : MonoBehaviour
     private float enteredDistance = 6f;
 
     private GameObject player;
+    private IsoCamera isoCamera;
     [HideInInspector]
     public bool playerInRoom;
 
@@ -53,6 +54,7 @@ public class NewRoom : MonoBehaviour
 
     private void Awake()
     {
+        isoCamera = Camera.main.GetComponent<IsoCamera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerEntered = false;
         roomLocked = false;
@@ -75,6 +77,7 @@ public class NewRoom : MonoBehaviour
         leftLocked = true;
         rightLocked = true;
         bottomLocked = true;
+        isoCamera.target = transform;
 
         StartCoroutine(lockDelay());
     }
@@ -87,6 +90,7 @@ public class NewRoom : MonoBehaviour
 
     public void UnLock()
     {
+        isoCamera.ResumeControl();
         roomLocked = false;
         tryingToUnlock = false;
         SetLockInfo(topLockMem, leftLockMem, rightLockMem, bottomLockMem);
