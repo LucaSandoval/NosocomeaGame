@@ -8,6 +8,8 @@ public class TempWin : MonoBehaviour
     private GameUI gameUI;
     private SoundPlayer soundPlayer;
 
+    private NewRoomGenerator roomGenerator;
+
     private bool won;
 
     public void Start()
@@ -15,6 +17,7 @@ public class TempWin : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
+        roomGenerator = GameObject.FindGameObjectWithTag("RoomGen").GetComponent<NewRoomGenerator>();
     }
 
     public void Update()
@@ -31,7 +34,11 @@ public class TempWin : MonoBehaviour
         soundPlayer.PlaySound("win");
         gameUI.levelWinObject.SetActive(true);
         yield return new WaitForSecondsRealtime(2);
-        LevelManager.instance.RestartLevel();
+
+        roomGenerator.DeleteRooms();
+        roomGenerator.GenerateRooms();
+        roomGenerator.PlacePlayer();
+        gameUI.levelWinObject.SetActive(false);
     }
 
 }

@@ -48,6 +48,7 @@ public class NewRoom : MonoBehaviour
     [Header("Layouts")]
     public GameObject[] enemyLayouts;
     public GameObject[] lootLayouts;
+    public GameObject endRoom;
 
 
     public List<GameObject> currentEnemies;
@@ -176,6 +177,9 @@ public class NewRoom : MonoBehaviour
             case NewRoomType.lootRoom:
                 rand = Random.Range(0, lootLayouts.Length);
                 lootLayouts[rand].SetActive(true);
+                break;
+            case NewRoomType.endRoom:
+                endRoom.SetActive(true);
                 break;
         }
     }

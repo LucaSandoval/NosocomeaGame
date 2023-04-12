@@ -14,6 +14,7 @@ public class ItemSpawner : MonoBehaviour
         int rand = Random.Range(0, items.Length);
         GameObject newItem = Instantiate(itemPrefab);
         newItem.transform.position = transform.position + new Vector3(0, 2f, 0);
+        newItem.transform.SetParent(transform);
 
         newItem.GetComponent<ItemPickup>().item = items[Random.Range(0, rand)];
     }

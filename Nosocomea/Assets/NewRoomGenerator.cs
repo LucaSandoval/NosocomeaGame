@@ -21,17 +21,7 @@ public class NewRoomGenerator : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         GenerateRooms();
-        //Place player in start room 
-        for (int y = 0; y < size; y++)
-        {
-            for (int x = 0; x < size; x++)
-            {
-                if (grid[y, x].type == NewRoomType.startRoom)
-                {
-                    player.transform.position = grid[y, x].gameObject.transform.position;
-                }
-            }
-        }
+        PlacePlayer();
     }
 
     public void Start()
@@ -47,7 +37,22 @@ public class NewRoomGenerator : MonoBehaviour
         }
     }
 
-    private void DeleteRooms()
+    public void PlacePlayer()
+    {
+        //Place player in start room 
+        for (int y = 0; y < size; y++)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                if (grid[y, x].type == NewRoomType.startRoom)
+                {
+                    player.transform.position = grid[y, x].gameObject.transform.position;
+                }
+            }
+        }
+    }
+
+    public void DeleteRooms()
     {
         for (int y = 0; y < size; y++)
         {
@@ -59,7 +64,7 @@ public class NewRoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateRooms()
+    public void GenerateRooms()
     {
         float roomSize = 18f;
 
