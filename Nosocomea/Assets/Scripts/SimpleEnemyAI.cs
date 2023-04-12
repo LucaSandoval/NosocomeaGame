@@ -22,9 +22,11 @@ public class SimpleEnemyAI : MonoBehaviour
     private bool moving;
 
     private EnemyProjectileController projectileController;
+    private RoomMember roomMember;
 
     public void Start()
     {
+        roomMember = GetComponent<RoomMember>();
         projectileController = GetComponent<EnemyProjectileController>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -55,7 +57,7 @@ public class SimpleEnemyAI : MonoBehaviour
                     moving = true;
                 }
 
-                if (Vector3.Distance(transform.position, player.transform.position) <= chaseRange)
+                if (Vector3.Distance(transform.position, player.transform.position) <= chaseRange && roomMember.memberRoom.playerInRoom)
                 {
                     state = SimpleAIState.Chase;
                 }
@@ -72,7 +74,7 @@ public class SimpleEnemyAI : MonoBehaviour
                     state = SimpleAIState.Stop;
                 }
 
-                if (Vector3.Distance(transform.position, player.transform.position) >= chaseRange)
+                if (Vector3.Distance(transform.position, player.transform.position) >= chaseRange && !roomMember.memberRoom.playerInRoom)
                 {
                     state = SimpleAIState.Wander;
                 }

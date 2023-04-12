@@ -1783,7 +1783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1404080569}
-  offset: {x: 10, y: 9, z: 6}
+  player: {fileID: 1404080569}
+  offset: {x: 7.85, y: 9, z: 7.63}
   moveSpeed: 5
 --- !u!43 &1265860507
 Mesh:

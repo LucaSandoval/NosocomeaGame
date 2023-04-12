@@ -65,8 +65,6 @@ public class NewRoom : MonoBehaviour
     {
         currentEnemies = new List<GameObject>();
         PickRoomLayout();
-        SimpleEnemyAI[] test = GetComponentsInChildren<SimpleEnemyAI>();
-        Debug.Log(test.Length);
     }
 
     public void Lock()
@@ -174,6 +172,10 @@ public class NewRoom : MonoBehaviour
             case NewRoomType.enemyRoom:
                 rand = Random.Range(0, enemyLayouts.Length);
                 enemyLayouts[rand].SetActive(true);
+                break;
+            case NewRoomType.lootRoom:
+                rand = Random.Range(0, lootLayouts.Length);
+                lootLayouts[rand].SetActive(true);
                 break;
         }
     }

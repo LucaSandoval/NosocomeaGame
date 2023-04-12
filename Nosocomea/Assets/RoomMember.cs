@@ -8,7 +8,6 @@ public class RoomMember : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("test");
         memberRoom.currentEnemies.Remove(transform.parent.gameObject);
     }
 }

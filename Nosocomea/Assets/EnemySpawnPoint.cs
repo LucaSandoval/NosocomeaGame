@@ -7,7 +7,7 @@ public class EnemySpawnPoint : MonoBehaviour
     public NewRoom thisRoom;
     public GameObject[] possibleEnemies;
 
-    void Start()
+    void Awake()
     {
         int rand = Random.Range(0, possibleEnemies.Length);
         GameObject newEnemy = Instantiate(possibleEnemies[rand]);
