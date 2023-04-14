@@ -47,6 +47,7 @@ public class EnemyAgent : MonoBehaviour
 
     agent = GetComponent<NavMeshAgent>();
     agent.updatePosition = false;
+    agent.updateRotation = false;
 
     currentState = EnemyState.Idle;
 
@@ -84,7 +85,8 @@ public class EnemyAgent : MonoBehaviour
     }
 
     agent.ResetPath();
-    rb.velocity = new Vector3(0, rb.velocity.y, 0);
+    Vector3 target = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime);
+    rb.velocity = new Vector3(target.x, rb.velocity.y, target.y);
   }
 
   void Chase()
@@ -113,7 +115,7 @@ public class EnemyAgent : MonoBehaviour
     Vector3 targetVelocity = (agent.nextPosition - transform.position).normalized * agent.speed;
     rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
 
-    Quaternion lookRotation = Quaternion.LookRotation(targetVelocity);
+    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(targetVelocity.x, 0, targetVelocity.z));
     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
 
     agent.nextPosition = transform.position;
