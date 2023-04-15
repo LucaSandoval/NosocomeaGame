@@ -12,4 +12,8 @@ public class PassiveItem : Item
     public int defence;
     public int health;
     public int quickness;
+
+    [Range(0, 100)] public int critChance;
+    [Tooltip("Multiplier to base damage as percentage. 100 = 100% increase to damage")] 
+    public int critPower;
 }

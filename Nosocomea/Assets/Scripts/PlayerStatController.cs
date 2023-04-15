@@ -12,6 +12,9 @@ public class PlayerStatController : MonoBehaviour
     public int health;
     public int quickness;
 
+    public float critChance;
+    public float critPower;
+
     private InventoryController inventoryController;
     private GameUI gameUI;
 
@@ -39,7 +42,7 @@ public class PlayerStatController : MonoBehaviour
     //stats the player starts a new run with
     public int[] GetBaseStats()
     {
-        return new int[6] { 1, 1, 1, 1, 1, 1 };
+        return new int[8] { 1, 1, 1, 1, 1, 1, 1, 50 };
     }
 
     //Set stats as a block
@@ -51,5 +54,7 @@ public class PlayerStatController : MonoBehaviour
         defence = stats[3];
         health = stats[4];
         quickness = stats[5];
+        critChance = stats[6];
+        critPower = stats[7];
     }
 }
