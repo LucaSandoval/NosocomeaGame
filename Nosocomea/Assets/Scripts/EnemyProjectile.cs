@@ -17,6 +17,8 @@ public class EnemyProjectile : MonoBehaviour
     public float sizeMult;
     [HideInInspector]
     public bool trackPlayer;
+    [HideInInspector]
+    public float damage;
 
     private void Awake()
     {
@@ -41,7 +43,7 @@ public class EnemyProjectile : MonoBehaviour
             if (!other.gameObject.GetComponent<PlayerController>().isDashing())
             {
                 PlayerHealthController script = other.gameObject.GetComponent<PlayerHealthController>();
-                script.TryHitPlayer(1);
+                script.TryHitPlayer(damage);
                 Destroy(gameObject);
             }           
         }

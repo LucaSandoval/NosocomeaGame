@@ -21,6 +21,7 @@ public class EnemyProjectileController : MonoBehaviour
 
     private GameObject enemyProjectilePrefab;
     private SoundPlayer soundPlayer;
+    private EnemyHealth enemyHealth;
 
     [System.Serializable]
     public struct EnemyProjectileAttack
@@ -34,6 +35,7 @@ public class EnemyProjectileController : MonoBehaviour
         //active = false;
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         enemyProjectilePrefab = Resources.Load<GameObject>("EnemyProjectile");
+        enemyHealth = GetComponent<EnemyHealth>();
         attackID = 0;
         SetCurrentAttack(0);
     }
@@ -105,10 +107,11 @@ public class EnemyProjectileController : MonoBehaviour
         script.moveSpeed = currentAttack.data.moveSpeed;
         script.sizeMult = currentAttack.data.size;
         script.trackPlayer = currentAttack.data.trackPlayer;
+        script.damage = enemyHealth.damage;
 
         if (currentAttack.data.trackPlayer)
         {
-            newBullet.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+            newBullet.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0, 0.5f, 0));
         }
     }
 

@@ -22,4 +22,9 @@ public class GameUI : MonoBehaviour
     public Text healthBarNum;
     [Header("Level Win")]
     public GameObject levelWinObject;
+    [Header("Effects")]
+    public Image playerHurt;
+    public Image sceneFade;
+    [Header("Floor Info")]
+    public Text floorCount;
 }

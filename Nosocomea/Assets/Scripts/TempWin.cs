@@ -9,6 +9,7 @@ public class TempWin : MonoBehaviour
     private SoundPlayer soundPlayer;
 
     private NewRoomGenerator roomGenerator;
+    private LevelManager levelManager;
 
     private bool won;
 
@@ -18,6 +19,7 @@ public class TempWin : MonoBehaviour
         gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         roomGenerator = GameObject.FindGameObjectWithTag("RoomGen").GetComponent<NewRoomGenerator>();
+        levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelManager>();
     }
 
     public void Update()
@@ -39,6 +41,9 @@ public class TempWin : MonoBehaviour
         roomGenerator.GenerateRooms();
         roomGenerator.PlacePlayer();
         gameUI.levelWinObject.SetActive(false);
+        levelManager.FloorCount++;
+        levelManager.fadeAlpha = 2;
+        player.GetComponent<PlayerHealthController>().SetHealth(player.GetComponent<PlayerHealthController>().CalculateMaximumHealth());
     }
 
 }

@@ -8,7 +8,7 @@ public class EnemyProjectileData : ScriptableObject
     [Header("Bullet Info")]
     [Range(0.1f, 3)]
     public float size = 0.5f;
-    [Range(0.1f, 5)]
+    [Range(0.1f, 10)]
     public float moveSpeed = 1f;
     [Header("Rate Info")]
     [Range(0.01f, 1)]

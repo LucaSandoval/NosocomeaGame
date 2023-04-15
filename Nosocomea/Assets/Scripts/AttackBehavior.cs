@@ -59,10 +59,11 @@ public class AttackBehavior : MonoBehaviour
             newAttackDisplay.transform.position = attackField.transform.position;
             newAttackDisplay.transform.rotation = attackField.transform.rotation;
 
+            //Set size properly
+            newAttackDisplay.transform.localScale = CalculateReachScale();
+            attackField.transform.localScale = CalculateReachScale();
         }
         
-
-
         // Destroy anything in the attack field
         Collider[] hitColliders = Physics.OverlapBox(attackField.bounds.center, attackField.bounds.size);
         foreach (Collider hitCollider in hitColliders)
@@ -87,6 +88,14 @@ public class AttackBehavior : MonoBehaviour
         }
 
         return (int)(baseDamage * multiplier);
+    }
+
+    private Vector3 CalculateReachScale()
+    {
+        float multiplier = Mathf.Lerp(1, 5, Mathf.InverseLerp(1, 20, statController.reach));
+        float baseScale = 1;
+
+        return new Vector3(baseScale * multiplier, baseScale * multiplier, baseScale * multiplier);
     }
 
     IEnumerator AttackRoutine()

@@ -16,6 +16,6 @@ public class ItemSpawner : MonoBehaviour
         newItem.transform.position = transform.position + new Vector3(0, 2f, 0);
         newItem.transform.SetParent(transform);
 
-        newItem.GetComponent<ItemPickup>().item = items[Random.Range(0, rand)];
+        newItem.GetComponent<ItemPickup>().item = items[rand];
     }
 }
