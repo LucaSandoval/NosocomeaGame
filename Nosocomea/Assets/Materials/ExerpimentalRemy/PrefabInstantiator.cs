@@ -13,6 +13,7 @@ public class PrefabInstantiator : MonoBehaviour
     void InstantiatePrefab()
     {
         Vector3 randomRotation = new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
-        Instantiate(prefab, transform.position, Quaternion.Euler(randomRotation));
+        GameObject newSpawn = Instantiate(prefab, transform.position, Quaternion.Euler(randomRotation));
+        newSpawn.transform.SetParent(transform);
     }
 }

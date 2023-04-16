@@ -75,6 +75,7 @@ public class AttackBehavior : MonoBehaviour
             if (hitCollider.gameObject.CompareTag("Enemy") || hitCollider.gameObject.CompareTag("Projectile"))
             {
                 EnemyHealth script = hitCollider.gameObject.GetComponent<EnemyHealth>();
+                PopupTextController.SpawnPopupText(CalculateDamage().ToString(), hitCollider.gameObject.transform.position);
                 script.ApplyDamage(CalculateDamage());
             }
         }

@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5418083386496020612, guid: bce13df864b08d642a87efb06e75660e, type: 3}
+      propertyPath: chaseRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5418083386496020614, guid: bce13df864b08d642a87efb06e75660e, type: 3}
       propertyPath: m_Size.y
       value: 0.05444309

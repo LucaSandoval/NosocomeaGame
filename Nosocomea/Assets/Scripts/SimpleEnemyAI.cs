@@ -31,7 +31,7 @@ public class SimpleEnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
         _animationManager = GetComponent<AnimationManager>();
-        state = SimpleAIState.Chase;
+        state = SimpleAIState.Wander;
         startPos = transform.position;
         moveSpeed = wanderSpeed;
         InvokeRepeating("PickNewRandomPoint", 1, 2);
