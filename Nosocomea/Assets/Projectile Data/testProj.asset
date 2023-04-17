@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: testProj
   m_EditorClassIdentifier: 
   size: 0.5
-  moveSpeed: 3
+  moveSpeed: 10
   fireRate: 1
-  spread: 1
-  trackPlayer: 0
+  spread: 0
+  trackPlayer: 1

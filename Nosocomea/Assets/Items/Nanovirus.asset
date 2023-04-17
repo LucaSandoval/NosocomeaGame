@@ -19,5 +19,5 @@ MonoBehaviour:
   strength: 0
   reach: 0
   defence: 0
-  health: 1
+  health: 2
   quickness: 0

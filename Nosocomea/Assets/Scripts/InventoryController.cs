@@ -108,6 +108,10 @@ public class InventoryController : MonoBehaviour
                 finalStatBlock[4] += ((PassiveItem)currentItems[i]).health;
                 //Quickness
                 finalStatBlock[5] += ((PassiveItem)currentItems[i]).quickness;
+                //CritChance
+                finalStatBlock[6] += ((PassiveItem)currentItems[i]).critChance;
+                //CritPower
+                finalStatBlock[7] += ((PassiveItem)currentItems[i]).critPower;
             }
         }
 

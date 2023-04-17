@@ -9,7 +9,7 @@ public abstract class AbstractDamageable : MonoBehaviour, Damageable
   {
         soundPlayer = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundPlayer>();
         soundPlayer.PlaySound("hit");
-        PopupTextController.SpawnPopupText(damage.ToString(), transform.localPosition);
+        //PopupTextController.SpawnPopupText(damage.ToString(), transform.localPosition);
         health -= damage;
   }
 

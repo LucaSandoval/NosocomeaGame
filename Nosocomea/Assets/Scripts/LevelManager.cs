@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour, LevelChangeEventEmitter
 {
+    public int FloorCount;
+
+    private GameUI gameUI;
+    [HideInInspector]
+    public float fadeAlpha;
+
   public static LevelManager instance;
 
   private int level;
@@ -21,9 +27,30 @@ public class LevelManager : MonoBehaviour, LevelChangeEventEmitter
     instance = this;
 
     level = 0;
+
+        gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
+        FloorCount = 1;
   }
 
-  public void RestartLevel()
+    private void Update()
+    {
+        gameUI.floorCount.text = FloorCount.ToString("00");
+    }
+
+    private void FixedUpdate()
+    {
+        if (fadeAlpha > 0)
+        {
+            fadeAlpha -= Time.deltaTime;
+            gameUI.sceneFade.gameObject.SetActive(true);
+            gameUI.sceneFade.color = new Color(gameUI.sceneFade.color.r, gameUI.sceneFade.color.g, gameUI.sceneFade.color.b, fadeAlpha);
+        } else
+        {
+            gameUI.sceneFade.gameObject.SetActive(false);
+        }
+    }
+
+    public void RestartLevel()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }

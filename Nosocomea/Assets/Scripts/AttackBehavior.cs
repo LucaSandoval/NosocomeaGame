@@ -16,6 +16,7 @@ public class AttackBehavior : MonoBehaviour
     private InventoryController inventoryController;
 
     private bool canAttack;
+    private bool isCrit;
 
     void Start()
     {
@@ -59,9 +60,13 @@ public class AttackBehavior : MonoBehaviour
             newAttackDisplay.transform.position = attackField.transform.position;
             newAttackDisplay.transform.rotation = attackField.transform.rotation;
 
+            //Set size properly
+            newAttackDisplay.transform.localScale = CalculateReachScale();
+            attackField.transform.localScale = CalculateReachScale();
         }
-        
 
+        int randomChance = Random.Range(0, 100);
+        isCrit = randomChance <= statController.critChance;
 
         // Destroy anything in the attack field
         Collider[] hitColliders = Physics.OverlapBox(attackField.bounds.center, attackField.bounds.size);
@@ -70,6 +75,7 @@ public class AttackBehavior : MonoBehaviour
             if (hitCollider.gameObject.CompareTag("Enemy") || hitCollider.gameObject.CompareTag("Projectile"))
             {
                 EnemyHealth script = hitCollider.gameObject.GetComponent<EnemyHealth>();
+                PopupTextController.SpawnPopupText(CalculateDamage().ToString(), hitCollider.gameObject.transform.position);
                 script.ApplyDamage(CalculateDamage());
             }
         }
@@ -81,12 +87,27 @@ public class AttackBehavior : MonoBehaviour
     {
         float multiplier = Mathf.Lerp(1, 5, Mathf.InverseLerp(1, 20, statController.strength));
         float baseDamage = 4;
+        float critMultiplier = 1;
+
+        if (isCrit)
+        {
+            critMultiplier = 1 + Mathf.InverseLerp(0, 100, statController.critPower);
+        }
+
         if (inventoryController.equippedWeapon != null)
         {
             baseDamage = inventoryController.equippedWeapon.damage;
         }
 
-        return (int)(baseDamage * multiplier);
+        return (int)(baseDamage * multiplier * critMultiplier);
+    }
+
+    private Vector3 CalculateReachScale()
+    {
+        float multiplier = Mathf.Lerp(1, 5, Mathf.InverseLerp(1, 20, statController.reach));
+        float baseScale = 1;
+
+        return new Vector3(baseScale * multiplier, baseScale * multiplier, baseScale * multiplier);
     }
 
     IEnumerator AttackRoutine()

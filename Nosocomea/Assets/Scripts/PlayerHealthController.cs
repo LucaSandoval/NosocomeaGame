@@ -9,11 +9,14 @@ public class PlayerHealthController : AbstractDamageable
     private PlayerStatController statController;
     private GameUI gameUI;
 
+    private float hurtAlpha;
+
     public void Start()
     {
         statController = GameObject.FindGameObjectWithTag("GameController").GetComponent<PlayerStatController>();
         gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
 
+        hurtAlpha = 0;
         maximumHealth = 20;
         SetHealth(maximumHealth);
     }
@@ -34,7 +37,21 @@ public class PlayerHealthController : AbstractDamageable
 
         gameUI.healthBarSlider.maxValue = maximumHealth;
         gameUI.healthBarSlider.value = GetCurrentHealth();
-        gameUI.healthBarNum.text = GetCurrentHealth() + "/" + maximumHealth;
+        gameUI.healthBarNum.text = GetCurrentHealth() + "/" + maximumHealth;   
+    }
+
+    public void FixedUpdate()
+    {
+        if (hurtAlpha > 0)
+        {
+            hurtAlpha -= Time.deltaTime;
+            gameUI.playerHurt.gameObject.SetActive(true);
+            gameUI.playerHurt.color = new Color(gameUI.playerHurt.color.r, gameUI.playerHurt.color.g, gameUI.playerHurt.color.b, hurtAlpha);
+        }
+        else
+        {
+            gameUI.playerHurt.gameObject.SetActive(false);
+        }
     }
 
     public void TryHitPlayer(float damage)
@@ -43,11 +60,12 @@ public class PlayerHealthController : AbstractDamageable
         reducedDamage = Mathf.Round(reducedDamage);
 
 
-        //PopupTextController.SpawnPopupText(reducedDamage.ToString(), transform.localPosition);
+        PopupTextController.SpawnPopupText(reducedDamage.ToString(), transform.localPosition);
         ApplyDamage(reducedDamage);
+        hurtAlpha += 0.3f;
     }
 
-    private float CalculateMaximumHealth()
+    public float CalculateMaximumHealth()
     {
         return 18 + (statController.health * 2);
     }
