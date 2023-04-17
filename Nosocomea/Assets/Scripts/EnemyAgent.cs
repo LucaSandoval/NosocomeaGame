@@ -45,6 +45,8 @@ public class EnemyAgent : MonoBehaviour
 
     currentState = EnemyState.Idle;
 
+    animationManager = GetComponent<AnimationManager>();
+
     attackTimer = 0;
   }
 
