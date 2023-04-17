@@ -15,6 +15,7 @@ public class NewRoom : MonoBehaviour
     //0 top, 1 left, 2, right, 3, bottom
     public GameObject[] doors;
     public MeshRenderer[] walls;
+    public MassSetMaterial[] details;
 
     [Header("Neighbor Info Info")]
     [SerializeField] private bool topLocked;
@@ -129,9 +130,16 @@ public class NewRoom : MonoBehaviour
         doors[3].SetActive(bottomLocked);
 
         walls[0].material = getMatFromBool(topVisible);
+        details[0].SetMassMaterial(getMatFromBool(topVisible));
+
         walls[1].material = getMatFromBool(leftVisible);
+        details[1].SetMassMaterial(getMatFromBool(leftVisible));
+
         walls[2].material = getMatFromBool(rightVisible);
+        details[2].SetMassMaterial(getMatFromBool(rightVisible));
+
         walls[3].material = getMatFromBool(bottomVisible);
+        details[3].SetMassMaterial(getMatFromBool(bottomVisible));
     }
 
     private Material getMatFromBool(bool boolean)

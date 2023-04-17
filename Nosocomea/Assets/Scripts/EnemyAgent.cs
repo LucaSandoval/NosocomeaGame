@@ -5,16 +5,8 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(EnemyBehavior))]
 public class EnemyAgent : MonoBehaviour
 {
-  public enum EnemyState
-  {
-    Idle,
-    Chase,
-    Attack,
-    Dead,
-  }
 
   [SerializeReference] private EnemyState currentState;
   private NavMeshAgent agent;
@@ -34,6 +26,8 @@ public class EnemyAgent : MonoBehaviour
   [SerializeField] private float attackCooldown = 1f;
   private float attackTimer;
   [SerializeField] private float attackDamage = 1f;
+
+  private AnimationManager animationManager;
 
   // Start is called before the first frame update
   void Start()
@@ -78,6 +72,7 @@ public class EnemyAgent : MonoBehaviour
 
   void Idle()
   {
+    animationManager.UpdateAnimatorValues(0);
     if (Vector3.Distance(transform.position, playerTransform.position) <= chaseDistance)
     {
       currentState = EnemyState.Chase;
@@ -91,6 +86,7 @@ public class EnemyAgent : MonoBehaviour
 
   void Chase()
   {
+    animationManager.UpdateAnimatorValues(1);
     if (Vector3.Distance(transform.position, playerTransform.position) > chaseDistance)
     {
       currentState = EnemyState.Idle;
@@ -123,6 +119,7 @@ public class EnemyAgent : MonoBehaviour
 
   void Attack()
   {
+    animationManager.UpdateAnimatorValues(0);
     if (Vector3.Distance(transform.position, playerTransform.position) > attackRange)
     {
       currentState = EnemyState.Chase;
@@ -148,7 +145,7 @@ public class EnemyAgent : MonoBehaviour
 
   void Dead()
   {
-    // TODO: Don't simply destroy the player
+    // TODO: Don't simply destroy the enemy
     Destroy(gameObject);
   }
 
@@ -179,4 +176,13 @@ public class EnemyAgent : MonoBehaviour
     Gizmos.color = Color.cyan;
     Gizmos.DrawRay(transform.position, transform.forward * chaseDistance);
   }
+}
+
+[System.Serializable]
+public enum EnemyState
+{
+  Idle,
+  Chase,
+  Attack,
+  Dead,
 }
