@@ -271,12 +271,12 @@ GameObject:
   - component: {fileID: 201710762}
   - component: {fileID: 201710761}
   m_Layer: 5
-  m_Name: PlayButton (2)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &201710760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ RectTransform:
   m_Children:
   - {fileID: 182547365}
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -322,7 +322,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 1, b: 0.3219719, a: 1}
     m_HighlightedColor: {r: 0.20521927, g: 0.41509432, b: 0.09163401, a: 1}
     m_PressedColor: {r: 0.06749733, g: 0.1509434, b: 0.07367095, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.20392159, g: 0.4156863, b: 0.09019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 272815126}
   - component: {fileID: 272815125}
   m_Layer: 5
-  m_Name: numOfRuns (1)
+  m_Name: runs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,7 +632,7 @@ RectTransform:
   m_Children:
   - {fileID: 2120446832}
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -682,7 +682,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 666583085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1741891860}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &666583085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +766,7 @@ RectTransform:
   m_Children:
   - {fileID: 1907407405}
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -804,7 +816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753750171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1741891860}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: StatPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753750171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,7 +1111,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1262,12 +1286,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1138402441}
-  - {fileID: 1477216227}
   - {fileID: 666583083}
   - {fileID: 2029470628}
   - {fileID: 753750169}
   - {fileID: 201710760}
   - {fileID: 1730630887}
+  - {fileID: 1477216227}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1311,7 +1335,7 @@ RectTransform:
   - {fileID: 1370853285}
   - {fileID: 272815124}
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1410,7 +1434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPanel: {fileID: 1730630891}
-  blackPanel: {fileID: 0}
+  gamesPlayedText: {fileID: 272815125}
+  blackPanel: {fileID: 1477216231}
 --- !u!4 &1741891861
 Transform:
   m_ObjectHideFlags: 0
@@ -1660,7 +1685,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1644177933}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
