@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NewRoomGenerator : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class NewRoomGenerator : MonoBehaviour
 
     private GameObject player;
 
+    private NavMeshSurface nms;
+
     public void Awake()
     {
         newRoomPrefab = Resources.Load<GameObject>("NewRoom");
@@ -22,11 +25,12 @@ public class NewRoomGenerator : MonoBehaviour
 
         GenerateRooms();
         PlacePlayer();
+        nms = GetComponent<NavMeshSurface>();
+        nms.BuildNavMesh();
     }
 
     public void Start()
     {
-        
     }
 
     private void Update()
