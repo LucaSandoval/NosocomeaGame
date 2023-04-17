@@ -505,8 +505,9 @@ GameObject:
   - component: {fileID: 5418083386496020614}
   - component: {fileID: 5418083386496020634}
   - component: {fileID: 5418083386496020635}
-  - component: {fileID: 5418083386496020612}
   - component: {fileID: 5418083386496020615}
+  - component: {fileID: 5978899978399527528}
+  - component: {fileID: -8904301848991267425}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -606,26 +607,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  firePos: {fileID: 0}
   attacks:
   - data: {fileID: 11400000, guid: d8d9c1e99cf07144bb868d68d67031d5, type: 2}
     length: 1
---- !u!114 &5418083386496020612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5184082923565372503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c692d622f821424ebb2083131b79e63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  chaseRange: 10
-  stopRange: 3
-  wanderSpeed: 1
-  chaseSpeed: 2
 --- !u!114 &5418083386496020615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +623,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d027d6361b953b748a2d18d04731f0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &5978899978399527528
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184082923565372503}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-8904301848991267425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184082923565372503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e49390ab9c7a4d5bbed531557c441b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  playerTransform: {fileID: 0}
+  chaseDistance: 10
+  attackRange: 3
+  turnSpeed: 5
+  attackCooldown: 1
+  attackDamage: 1
 --- !u!1 &5273649577853725504
 GameObject:
   m_ObjectHideFlags: 0
