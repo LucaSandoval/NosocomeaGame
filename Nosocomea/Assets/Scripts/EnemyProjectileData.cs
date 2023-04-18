@@ -11,7 +11,7 @@ public class EnemyProjectileData : ScriptableObject
     [Range(0.1f, 10)]
     public float moveSpeed = 1f;
     [Header("Rate Info")]
-    [Range(0.01f, 1)]
+    [Range(0.01f, 2)]
     public float fireRate = 1f; //realtime seconds
     public SpreadType spread;
     [Header("Extra")]

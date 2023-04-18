@@ -15,7 +15,9 @@ public class MassSetMaterial : MonoBehaviour
     {
         for(int i = 0; i < children.Length; i++)
         {
+            //children[i].material.
             children[i].material = mat;
+            //children[i].material.color = new Color(children[i].material.color.r, children[i].material.color.g, children[i].material.color.b, mat.color.a);
         }
     }
 
